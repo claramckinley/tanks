@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnwgfp24ls5u6"]
+
+[ext_resource type="PackedScene" uid="uid://s7ckqggsheh8" path="res://tank/tank.tscn" id="1_0ed17"]
+[ext_resource type="Script" path="res://tank/player.gd" id="2_4k4s6"]
+
+[node name="player" instance=ExtResource("1_0ed17")]
+script = ExtResource("2_4k4s6")
+speed = 50
+rotation_speed = 1
+
+[node name="body" parent="." index="1"]
+rotation = 1.5708
+
+[node name="cannon" parent="." index="2"]
+position = Vector2(10, 0)
+rotation = 1.5708

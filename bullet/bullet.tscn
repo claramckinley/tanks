@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://2jvr05n4ewud"]
+
+[ext_resource type="Script" path="res://bullet/bullet.gd" id="1_5xdtt"]
+[ext_resource type="Texture2D" uid="uid://1njagdf65aqy" path="res://tank/tanks (1).png" id="1_a88wh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e12ga"]
+radius = 1.3641
+height = 4.01676
+
+[node name="Bullet" type="StaticBody2D"]
+script = ExtResource("1_5xdtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.46153, -0.374993)
+texture = ExtResource("1_a88wh")
+hframes = 2
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.0288458, 0.0144229)
+shape = SubResource("CapsuleShape2D_e12ga")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl8b8k6ckvsd2"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_qqrxy"]
+[ext_resource type="PackedScene" uid="uid://bnwgfp24ls5u6" path="res://tank/player.tscn" id="1_v3pbi"]
+[ext_resource type="PackedScene" uid="uid://dahns6rnppddm" path="res://tank/enemy.tscn" id="3_drflb"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_qqrxy")
+
+[node name="player" parent="." instance=ExtResource("1_v3pbi")]
+position = Vector2(212, 91)
+
+[node name="enemy" parent="." instance=ExtResource("3_drflb")]
+bullet = null

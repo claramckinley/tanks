@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dahns6rnppddm"]
+
+[ext_resource type="PackedScene" uid="uid://s7ckqggsheh8" path="res://tank/tank.tscn" id="1_xo1ef"]
+[ext_resource type="Script" path="res://tank/enemy.gd" id="2_1u2i2"]
+
+[node name="enemy" instance=ExtResource("1_xo1ef")]
+script = ExtResource("2_1u2i2")
+
+[node name="body" parent="." index="1"]
+frame = 1
+
+[node name="cannon" parent="." index="2"]
+position = Vector2(0, -2)
+frame = 3
