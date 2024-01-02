@@ -1,14 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dahns6rnppddm"]
+[gd_scene load_steps=5 format=3 uid="uid://dahns6rnppddm"]
 
 [ext_resource type="PackedScene" uid="uid://s7ckqggsheh8" path="res://tank/tank.tscn" id="1_xo1ef"]
 [ext_resource type="Script" path="res://tank/enemy.gd" id="2_1u2i2"]
+[ext_resource type="PackedScene" uid="uid://dmaw6jafkkcwq" path="res://bullet/enemy_bullet.tscn" id="3_1ml85"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbb4x"]
+radius = 145.003
 
 [node name="enemy" instance=ExtResource("1_xo1ef")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("2_1u2i2")
+health = 10
+bullet = ExtResource("3_1ml85")
 
 [node name="body" parent="." index="1"]
+rotation = -1.5708
 frame = 1
 
 [node name="cannon" parent="." index="2"]
-position = Vector2(0, -2)
+position = Vector2(8, 0)
+rotation = -4.70745
 frame = 3
+
+[node name="DetectRadius" type="Area2D" parent="." index="4"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
+shape = SubResource("CircleShape2D_qbb4x")
+
+[node name="RayCast2D" parent="." index="5"]
+collision_mask = 3
+
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_detect_radius_body_exited"]

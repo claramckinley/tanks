@@ -12,17 +12,32 @@ script = ExtResource("1_vdwrw")
 shape = SubResource("RectangleShape2D_qvnof")
 
 [node name="body" type="Sprite2D" parent="."]
+rotation = 1.57178
 texture = ExtResource("1_qhr8v")
 hframes = 2
 vframes = 3
 
 [node name="cannon" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(10, -9.53674e-07)
+rotation = 1.57178
 texture = ExtResource("1_qhr8v")
 hframes = 2
 vframes = 3
 frame = 2
 
-[node name="Marker2D" type="Marker2D" parent="cannon"]
+[node name="muzzle" type="Marker2D" parent="cannon"]
 
 [node name="GunTimer" type="Timer" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(-1.00001, 322)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -15.0
+offset_top = -22.0
+offset_right = 16.0
+offset_bottom = -18.0
+show_percentage = false
+
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]

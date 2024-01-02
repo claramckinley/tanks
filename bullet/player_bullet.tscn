@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b12clxq6orfig"]
+
+[ext_resource type="PackedScene" uid="uid://2jvr05n4ewud" path="res://bullet/bullet.tscn" id="1_khjyy"]
+
+[sub_resource type="GDScript" id="GDScript_l3trd"]
+script/source = "extends \"res://bullet/bullet.gd\"
+
+func start(_position, _direction):
+	position = _position
+	rotation = _direction.angle()
+	$LifeTimeTimer.wait_time = lifetime
+	velocity = _direction * speed
+"
+
+[node name="PlayerBullet" instance=ExtResource("1_khjyy")]
+rotation = -0.00132858
+collision_mask = 4
+script = SubResource("GDScript_l3trd")
+speed = 750
+lifetime = 0.5
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0.287814, 0.516745)
+rotation = 1.5708
