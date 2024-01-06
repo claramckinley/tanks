@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1i6ec32x72ol"]
+
+[ext_resource type="Script" path="res://obstacle/obstacle.gd" id="1_mkiva"]
+[ext_resource type="Texture2D" uid="uid://lhwg1sii1nj" path="res://obstacle/wall1.png" id="1_mr8vp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwvyr"]
+size = Vector2(32.0427, 14.5126)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5qya"]
+radius = 5.99995
+height = 31.9997
+
+[node name="obstacle" type="StaticBody2D"]
+script = ExtResource("1_mkiva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0419059, -0.39433)
+rotation = 0.00863285
+shape = SubResource("RectangleShape2D_rwvyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mr8vp")
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["safe"]]
+position = Vector2(0, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -9.53674e-07)
+rotation = 1.56663
+shape = SubResource("CapsuleShape2D_l5qya")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["safe"]]
+position = Vector2(0, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+rotation = 1.56663
+shape = SubResource("CapsuleShape2D_l5qya")

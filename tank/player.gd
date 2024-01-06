@@ -1,7 +1,6 @@
 extends "res://tank/tank.gd"
 
-func _ready():
-	$GunTimer.wait_time = gun_cooldown
+signal player_hit
 
 func control(delta):
 	var rot_dir = 0
@@ -29,3 +28,10 @@ func control_cannon(delta):
 
 func _on_gun_timer_timeout():
 	can_shoot = true
+	
+func take_damage(damage):
+	if health_bar.value - damage < 0:
+		queue_free()
+	else:
+		health_bar.value = health_bar.value - damage
+	emit_signal('player_hit')

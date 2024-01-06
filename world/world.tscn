@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bnwgfp24ls5u6" path="res://tank/player.tscn" id="1_v3pbi"]
 [ext_resource type="PackedScene" uid="uid://dahns6rnppddm" path="res://tank/enemy.tscn" id="3_drflb"]
 [ext_resource type="PackedScene" uid="uid://b12clxq6orfig" path="res://bullet/player_bullet.tscn" id="4_npedp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mn0p"]
-size = Vector2(51.8109, 16.708)
+[ext_resource type="PackedScene" uid="uid://c1i6ec32x72ol" path="res://obstacle/obstacle.tscn" id="5_g0eo6"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_qqrxy")
@@ -20,14 +18,14 @@ position = Vector2(67, 44)
 rotation = 0.472372
 bullet = ExtResource("4_npedp")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(147, 47)
-rotation = -1.09934
+[node name="obstacle" parent="." instance=ExtResource("5_g0eo6")]
+position = Vector2(140, 40)
+rotation = -1.07736
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(8.50345, 1.71947)
-rotation = 0.00863285
-shape = SubResource("RectangleShape2D_7mn0p")
+[node name="obstacle2" parent="." instance=ExtResource("5_g0eo6")]
+position = Vector2(125, 68)
+rotation = -1.07736
 
+[connection signal="player_hit" from="player" to="enemy" method="_on_player_player_hit"]
 [connection signal="shoot" from="player" to="." method="_on_tank_shoot"]
 [connection signal="shoot" from="enemy" to="." method="_on_tank_shoot"]

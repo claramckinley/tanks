@@ -16,6 +16,7 @@ var can_shoot = true
 var alive = true
 
 func _ready():
+	$GunTimer.wait_time = gun_cooldown
 	health_bar.max_value = health
 	health_bar.value = health
 	
@@ -23,6 +24,9 @@ func control(delta):
 	pass
 	
 func control_cannon(delta):
+	pass
+
+func take_damage(damage):
 	pass
 	
 func _physics_process(delta):
@@ -37,16 +41,9 @@ func check_shoot():
 		can_shoot = false
 		$GunTimer.start()
 		var dir = Vector2(1,0).rotated($cannon.global_rotation + deg_to_rad(-90))
-		print(dir)
 		emit_signal('shoot', bullet, $cannon/muzzle.global_position, dir)
 		
 
 func _on_gun_timer_timeout():
 	can_shoot = true
-
-func take_damage(damage):
-	if health_bar.value - damage < 0:
-		queue_free()
-	else:
-		health_bar.value = health_bar.value - damage
 		

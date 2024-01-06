@@ -4,7 +4,7 @@ extends Node2D
 @onready var enemy = $enemy
 
 func _physics_process(delta):
-	if player != null:
+	if player != null and enemy != null:
 		enemy.player_pos = player.global_position
 
 func _on_tank_shoot(bullet, pos, dir):

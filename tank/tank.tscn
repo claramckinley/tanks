@@ -26,6 +26,7 @@ vframes = 3
 frame = 2
 
 [node name="muzzle" type="Marker2D" parent="cannon"]
+position = Vector2(-0.00981041, -10)
 
 [node name="GunTimer" type="Timer" parent="."]
 
